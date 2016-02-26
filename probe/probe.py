@@ -1,6 +1,6 @@
 import json
 from apiclient.base import APIClient
-from apiclient.exceptions import ApiException
+from .exceptions import *
 
 
 class ProbeClient(APIClient):
@@ -21,7 +21,7 @@ class ProbeClient(APIClient):
 
     def search_company(self, company_name):
         if not company_name:
-            raise ApiException('Company Name can not be empty')
+            raise FieldEmptyException('Company Name')
 
         filters = {
             'nameStartsWith': '{}'.format(company_name)
@@ -38,28 +38,28 @@ class ProbeClient(APIClient):
         """
 
         if id_type not in self.SUPPORTED_ID_TYPES:
-            raise ApiException("ID type is not supported")
+            raise UnSupportedIDException()
 
         if not id_number:
-            raise ApiException("ID can not be empty")
+            raise FieldEmptyException('ID')
 
         return self.call(self._signatories,
                          params={'filters': json.dumps({id_type: id_number})})
 
     def get_company_details(self, cin):
         if not cin:
-            raise ApiException("Company cin can not be empty.")
+            raise FieldEmptyException('Company cin')
 
         return self.call(self._company_details.format(cin=cin))
 
     def get_company_authorized_signatories(self, cin):
         if not cin:
-            raise ApiException("Company cin can not be empty.")
+            raise FieldEmptyException('Company in')
 
         return self.call(self._company_signatories.format(cin=cin))
 
     def get_company_charges(self, cin):
         if not cin:
-            raise ApiException("Company cin can not be empty.")
+            raise FieldEmptyException('Company in')
 
         return self.call(self._company_charges.format(cin=cin))
