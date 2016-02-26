@@ -4,9 +4,7 @@ from apiclient.exceptions import ApiException
 
 
 class ProbeClient(APIClient):
-    """
-        class to represent perfios API
-    """
+    
     SUPPORTED_ID_TYPES = ('din', 'pan')
 
     def __init__(self, api_key=None):
