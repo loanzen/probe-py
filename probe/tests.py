@@ -4,7 +4,7 @@ from apiclient.exceptions import ApiException
 
 
 class TestProbeAPI(unittest.TestCase):
-    API_KEY = 'upyRikQLoB7Tp62KAxDgGi26xXZsXMR46XO80lca'
+    API_KEY = ''
 
     def test_search_company_empty(self):
         client = ProbeClient(self.API_KEY)
