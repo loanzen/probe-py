@@ -6,18 +6,22 @@ from .exceptions import *
 class ProbeClient(APIClient):
     
     SUPPORTED_ID_TYPES = ('din', 'pan')
+    API_VERSION = '1.1'
 
     def __init__(self, api_key=None):
         super(ProbeClient, self).__init__(
             base_url='https://api.probe42.in/probe_lite',
             api_key=api_key,
-            auth_header='x-api-key')
+            auth_header='x-api-key',
+            headers={'x-api-version': self.API_VERSION})
 
         self._companies = 'companies'
         self._company_details = 'companies/{cin}'
         self._signatories = 'authorizedSignatories'
         self._company_signatories = 'companies/{cin}/authorizedSignatories'
         self._company_charges = 'companies/{cin}/charges'
+        self._company_finances_data_status = 'companies/{cin}/financial-datastatus'
+        self._company_financials = 'companies/{cin}/financials'
 
     def search_company(self, company_name):
         if not company_name:
@@ -54,12 +58,24 @@ class ProbeClient(APIClient):
 
     def get_company_authorized_signatories(self, cin):
         if not cin:
-            raise FieldEmptyException('Company in')
+            raise FieldEmptyException('Company cin')
 
         return self.call(self._company_signatories.format(cin=cin))
 
     def get_company_charges(self, cin):
         if not cin:
-            raise FieldEmptyException('Company in')
+            raise FieldEmptyException('Company cin')
 
         return self.call(self._company_charges.format(cin=cin))
+
+    def get_company_financial_data_status(self, cin):
+        if not cin:
+            raise FieldEmptyException('Company cin')
+
+        return self.call(self._company_finances_data_status.format(cin=cin))
+
+    def get_company_financials(self, cin):
+        if not cin:
+            raise FieldEmptyException('Company cin')
+
+        return self.call(self._company_financials.format(cin=cin))
