@@ -9,27 +9,37 @@ $pip install git+https://github.com/loanzen/probe-py.git#egg=probe
 
 ## how to run
 
-from probe import ProbeClient
+first set an environment variable for api key
+
+$ export api_key='your api key'
 
 
-client = ProbeClient('your api key')
+from probe import SearchApi, CompanyApi
+
 
 ### to search company with the company name starting substring
 
-client.search_company('company_name_starts_with')
+client = SearchApi()
+
+client.companies_get(filters='{"nameStartsWith": "company-name"}')
+
 
 ### to search an authorized signatory with pan/din
 
-client.search_authorized_signatory('pan_number', 'pan')
+client.authorized_signatories_get(filters='{"pan": "PAN Number of Signatory"}')
 
-### to get company details (you will need cin of company)
 
-client.get_company_details('company_cin')
+### to get company details using cin
+
+client = CompanyApi()
+
+client.companies_cin_get('Company-cin')
 
 
 ### list companies authorized signatories
 
-client.get_company_authorized_signatories('Company_cin')
+client.companies_cin_authorized_signatories_get('Company-cin')
 
 ### to get the company charges
-client.get_company_charges('company_cin')
+
+client.companies_cin_charges_get('Company-cin')
