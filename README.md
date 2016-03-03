@@ -3,9 +3,9 @@ a simple API client for probe apis in python
 
 ## how to install
 
-install the probe-py package like this
+you can install probe-py from pypi
 
-$pip install git+https://github.com/loanzen/probe-py.git#egg=probe
+$pip install probe-py
 
 ## how to run
 
