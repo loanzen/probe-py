@@ -21,7 +21,7 @@ from probe import SearchApi, CompanyApi
 
 client = SearchApi()
 
-client.companies_get(filters='{"nameStartsWith": "company-name"}')
+client.companies_get('api version', filters='{"nameStartsWith": "company-name"}')
 
 
 ### to search an authorized signatory with pan/din
@@ -33,13 +33,13 @@ client.authorized_signatories_get(filters='{"pan": "PAN Number of Signatory"}')
 
 client = CompanyApi()
 
-client.companies_cin_get('Company-cin')
+client.companies_cin_get('api version', 'Company-cin')
 
 
 ### list companies authorized signatories
 
-client.companies_cin_authorized_signatories_get('Company-cin')
+client.companies_cin_authorized_signatories_get('api version', 'Company-cin')
 
 ### to get the company charges
 
-client.companies_cin_charges_get('Company-cin')
+client.companies_cin_charges_get('api version', 'Company-cin')
