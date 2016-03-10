@@ -45,7 +45,7 @@ class CompanyApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def companies_cin_get(self, cin, **kwargs):
+    def companies_cin_get(self, x_api_version, cin, **kwargs):
         """
         Company Detail
         Returns a Company based on a single company identification number (cin)
@@ -56,17 +56,18 @@ class CompanyApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.companies_cin_get(cin, callback=callback_function)
+        >>> thread = api.companies_cin_get(x_api_version, cin, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str x_api_version: api version (required)
         :param str cin: cin of the company to fetch (required)
-        :return: CompanyDetail
+        :return: InlineResponse2002
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['cin']
+        all_params = ['x_api_version', 'cin']
         all_params.append('callback')
 
         params = locals()
@@ -79,10 +80,12 @@ class CompanyApi(object):
             params[key] = val
         del params['kwargs']
 
+        # verify the required parameter 'x_api_version' is set
+        if ('x_api_version' not in params) or (params['x_api_version'] is None):
+            raise ValueError("Missing the required parameter `x_api_version` when calling `companies_cin_get`")
         # verify the required parameter 'cin' is set
         if ('cin' not in params) or (params['cin'] is None):
-            raise ValueError("Missing the required parameter `cin` when"
-                             " calling `companies_cin_get`")
+            raise ValueError("Missing the required parameter `cin` when calling `companies_cin_get`")
 
         resource_path = '/companies/{cin}'.replace('{format}', 'json')
         method = 'GET'
@@ -94,6 +97,8 @@ class CompanyApi(object):
         query_params = {}
 
         header_params = {}
+        if 'x_api_version' in params:
+            header_params['x-api-version'] = params['x_api_version']
 
         form_params = {}
         files = {}
@@ -120,12 +125,12 @@ class CompanyApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=files,
-                                            response_type='CompanyDetail',
+                                            response_type='InlineResponse2002',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'))
         return response
 
-    def companies_cin_authorized_signatories_get(self, cin, **kwargs):
+    def companies_cin_authorized_signatories_get(self, x_api_version, cin, **kwargs):
         """
         Authorized Signatories
         Returns the Authorized Signatories which includes the Directors given a Company's CIN
@@ -136,17 +141,18 @@ class CompanyApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.companies_cin_authorized_signatories_get(cin, callback=callback_function)
+        >>> thread = api.companies_cin_authorized_signatories_get(x_api_version, cin, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str x_api_version: api version (required)
         :param str cin: cin of the company to fetch (required)
-        :return: list[AuthorizedSignatory]
+        :return: InlineResponse2003
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['cin']
+        all_params = ['x_api_version', 'cin']
         all_params.append('callback')
 
         params = locals()
@@ -159,12 +165,14 @@ class CompanyApi(object):
             params[key] = val
         del params['kwargs']
 
+        # verify the required parameter 'x_api_version' is set
+        if ('x_api_version' not in params) or (params['x_api_version'] is None):
+            raise ValueError("Missing the required parameter `x_api_version` when calling `companies_cin_authorized_signatories_get`")
         # verify the required parameter 'cin' is set
         if ('cin' not in params) or (params['cin'] is None):
-            raise ValueError("Missing the required parameter `cin` "
-                             "when calling `companies_cin_authorized_signatories_get`")
+            raise ValueError("Missing the required parameter `cin` when calling `companies_cin_authorized_signatories_get`")
 
-        resource_path = '/companies/{cin}/authorizedSignatories'.replace('{format}', 'json')
+        resource_path = '/companies/{cin}/authorized-signatories'.replace('{format}', 'json')
         method = 'GET'
 
         path_params = {}
@@ -174,6 +182,8 @@ class CompanyApi(object):
         query_params = {}
 
         header_params = {}
+        if 'x_api_version' in params:
+            header_params['x-api-version'] = params['x_api_version']
 
         form_params = {}
         files = {}
@@ -200,12 +210,12 @@ class CompanyApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=files,
-                                            response_type='list[AuthorizedSignatory]',
+                                            response_type='InlineResponse2003',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'))
         return response
 
-    def companies_cin_charges_get(self, cin, **kwargs):
+    def companies_cin_charges_get(self, x_api_version, cin, **kwargs):
         """
         Charges
         Returns the Charge details given a Company's CIN
@@ -216,17 +226,18 @@ class CompanyApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.companies_cin_charges_get(cin, callback=callback_function)
+        >>> thread = api.companies_cin_charges_get(x_api_version, cin, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str x_api_version: api version (required)
         :param str cin: cin of the company to fetch (required)
-        :return: list[Charge]
+        :return: InlineResponse2004
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['cin']
+        all_params = ['x_api_version', 'cin']
         all_params.append('callback')
 
         params = locals()
@@ -239,10 +250,12 @@ class CompanyApi(object):
             params[key] = val
         del params['kwargs']
 
+        # verify the required parameter 'x_api_version' is set
+        if ('x_api_version' not in params) or (params['x_api_version'] is None):
+            raise ValueError("Missing the required parameter `x_api_version` when calling `companies_cin_charges_get`")
         # verify the required parameter 'cin' is set
         if ('cin' not in params) or (params['cin'] is None):
-            raise ValueError("Missing the required parameter `cin` when "
-                             "calling `companies_cin_charges_get`")
+            raise ValueError("Missing the required parameter `cin` when calling `companies_cin_charges_get`")
 
         resource_path = '/companies/{cin}/charges'.replace('{format}', 'json')
         method = 'GET'
@@ -254,6 +267,8 @@ class CompanyApi(object):
         query_params = {}
 
         header_params = {}
+        if 'x_api_version' in params:
+            header_params['x-api-version'] = params['x_api_version']
 
         form_params = {}
         files = {}
@@ -280,7 +295,262 @@ class CompanyApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=files,
-                                            response_type='list[Charge]',
+                                            response_type='InlineResponse2004',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'))
+        return response
+
+    def companies_cin_financial_datastatus_get(self, x_api_version, cin, **kwargs):
+        """
+        Financial Data Status
+        Returns the financial status of the company - years for which balancesheet is present
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.companies_cin_financial_datastatus_get(x_api_version, cin, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str x_api_version: api version (required)
+        :param str cin: cin of the company to fetch (required)
+        :return: InlineResponse2005
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['x_api_version', 'cin']
+        all_params.append('callback')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method companies_cin_financial_datastatus_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        # verify the required parameter 'x_api_version' is set
+        if ('x_api_version' not in params) or (params['x_api_version'] is None):
+            raise ValueError("Missing the required parameter `x_api_version` when calling `companies_cin_financial_datastatus_get`")
+        # verify the required parameter 'cin' is set
+        if ('cin' not in params) or (params['cin'] is None):
+            raise ValueError("Missing the required parameter `cin` when calling `companies_cin_financial_datastatus_get`")
+
+        resource_path = '/companies/{cin}/financial-datastatus'.replace('{format}', 'json')
+        method = 'GET'
+
+        path_params = {}
+        if 'cin' in params:
+            path_params['cin'] = params['cin']
+
+        query_params = {}
+
+        header_params = {}
+        if 'x_api_version' in params:
+            header_params['x-api-version'] = params['x_api_version']
+
+        form_params = {}
+        files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['api_key']
+
+        response = self.api_client.call_api(resource_path, method,
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=files,
+                                            response_type='InlineResponse2005',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'))
+        return response
+
+    def companies_cin_financials_get(self, x_api_version, cin, **kwargs):
+        """
+        Company Financials
+        Returns the balance sheet and P&L for the given company CIN. This will return the last 3 years or 2 years financial data as available.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.companies_cin_financials_get(x_api_version, cin, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str x_api_version: api version (required)
+        :param str cin: cin of the company to fetch (required)
+        :return: InlineResponse2006
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['x_api_version', 'cin']
+        all_params.append('callback')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method companies_cin_financials_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        # verify the required parameter 'x_api_version' is set
+        if ('x_api_version' not in params) or (params['x_api_version'] is None):
+            raise ValueError("Missing the required parameter `x_api_version` when calling `companies_cin_financials_get`")
+        # verify the required parameter 'cin' is set
+        if ('cin' not in params) or (params['cin'] is None):
+            raise ValueError("Missing the required parameter `cin` when calling `companies_cin_financials_get`")
+
+        resource_path = '/companies/{cin}/financials'.replace('{format}', 'json')
+        method = 'GET'
+
+        path_params = {}
+        if 'cin' in params:
+            path_params['cin'] = params['cin']
+
+        query_params = {}
+
+        header_params = {}
+        if 'x_api_version' in params:
+            header_params['x-api-version'] = params['x_api_version']
+
+        form_params = {}
+        files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['api_key']
+
+        response = self.api_client.call_api(resource_path, method,
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=files,
+                                            response_type='InlineResponse2006',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'))
+        return response
+
+    def companies_cin_update_post(self, x_api_version, cin, **kwargs):
+        """
+        Update Company data
+        This is an asynchronous call, where the request to update the company data is queued.\nYou will have to call the financial-datastatus to see if the update has happened.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.companies_cin_update_post(x_api_version, cin, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str x_api_version: api version (required)
+        :param str cin: cin of the company to update (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['x_api_version', 'cin']
+        all_params.append('callback')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method companies_cin_update_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        # verify the required parameter 'x_api_version' is set
+        if ('x_api_version' not in params) or (params['x_api_version'] is None):
+            raise ValueError("Missing the required parameter `x_api_version` when calling `companies_cin_update_post`")
+        # verify the required parameter 'cin' is set
+        if ('cin' not in params) or (params['cin'] is None):
+            raise ValueError("Missing the required parameter `cin` when calling `companies_cin_update_post`")
+
+        resource_path = '/companies/{cin}/update'.replace('{format}', 'json')
+        method = 'POST'
+
+        path_params = {}
+        if 'cin' in params:
+            path_params['cin'] = params['cin']
+
+        query_params = {}
+
+        header_params = {}
+        if 'x_api_version' in params:
+            header_params['x-api-version'] = params['x_api_version']
+
+        form_params = {}
+        files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['api_key']
+
+        response = self.api_client.call_api(resource_path, method,
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=files,
+                                            response_type=None,
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'))
         return response

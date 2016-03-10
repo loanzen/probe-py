@@ -41,7 +41,7 @@ class AuthorizedSignatoryWithCompanies(object):
             'pan': 'str',
             'din': 'str',
             'date_of_birth': 'str',
-            'age': 'str',
+            'age': 'float',
             'address': 'Address',
             'companies': 'list[CompanyBrief]'
         }
@@ -159,7 +159,7 @@ class AuthorizedSignatoryWithCompanies(object):
         Age of the Authorized Signatory
 
         :return: The age of this AuthorizedSignatoryWithCompanies.
-        :rtype: str
+        :rtype: float
         """
         return self._age
 
@@ -170,7 +170,7 @@ class AuthorizedSignatoryWithCompanies(object):
         Age of the Authorized Signatory
 
         :param age: The age of this AuthorizedSignatoryWithCompanies.
-        :type: str
+        :type: float
         """
         self._age = age
 
@@ -178,7 +178,7 @@ class AuthorizedSignatoryWithCompanies(object):
     def address(self):
         """
         Gets the address of this AuthorizedSignatoryWithCompanies.
-        Authorized Signatory address
+
 
         :return: The address of this AuthorizedSignatoryWithCompanies.
         :rtype: Address
@@ -189,7 +189,7 @@ class AuthorizedSignatoryWithCompanies(object):
     def address(self, address):
         """
         Sets the address of this AuthorizedSignatoryWithCompanies.
-        Authorized Signatory address
+
 
         :param address: The address of this AuthorizedSignatoryWithCompanies.
         :type: Address

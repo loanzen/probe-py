@@ -37,281 +37,36 @@ class CompanyDetail(object):
                                   and the value is json key in definition.
         """
         self.swagger_types = {
-            'authorized_capital': 'float',
-            'cin': 'str',
-            'efiling_status': 'str',
-            'incorporation_date': 'str',
-            'legal_name': 'str',
-            'paid_up_capital': 'int',
-            'registered_address': 'Address',
-            'classification': 'str',
-            'status': 'str',
-            'next_cin': 'str'
+            'company': 'CompanyDetailCompany'
         }
 
         self.attribute_map = {
-            'authorized_capital': 'authorized_capital',
-            'cin': 'cin',
-            'efiling_status': 'efiling_status',
-            'incorporation_date': 'incorporation_date',
-            'legal_name': 'legal_name',
-            'paid_up_capital': 'paid_up_capital',
-            'registered_address': 'registered_address',
-            'classification': 'classification',
-            'status': 'status',
-            'next_cin': 'next_cin'
+            'company': 'company'
         }
 
-        self._authorized_capital = None
-        self._cin = None
-        self._efiling_status = None
-        self._incorporation_date = None
-        self._legal_name = None
-        self._paid_up_capital = None
-        self._registered_address = None
-        self._classification = None
-        self._status = None
-        self._next_cin = None
+        self._company = None
 
     @property
-    def authorized_capital(self):
+    def company(self):
         """
-        Gets the authorized_capital of this CompanyDetail.
-        Authorized Capital for the company.
+        Gets the company of this CompanyDetail.
 
-        :return: The authorized_capital of this CompanyDetail.
-        :rtype: float
-        """
-        return self._authorized_capital
 
-    @authorized_capital.setter
-    def authorized_capital(self, authorized_capital):
+        :return: The company of this CompanyDetail.
+        :rtype: CompanyDetailCompany
         """
-        Sets the authorized_capital of this CompanyDetail.
-        Authorized Capital for the company.
+        return self._company
 
-        :param authorized_capital: The authorized_capital of this CompanyDetail.
-        :type: float
+    @company.setter
+    def company(self, company):
         """
-        self._authorized_capital = authorized_capital
+        Sets the company of this CompanyDetail.
 
-    @property
-    def cin(self):
-        """
-        Gets the cin of this CompanyDetail.
-        Unique identifier representing the Company - Company Identification number.
 
-        :return: The cin of this CompanyDetail.
-        :rtype: str
+        :param company: The company of this CompanyDetail.
+        :type: CompanyDetailCompany
         """
-        return self._cin
-
-    @cin.setter
-    def cin(self, cin):
-        """
-        Sets the cin of this CompanyDetail.
-        Unique identifier representing the Company - Company Identification number.
-
-        :param cin: The cin of this CompanyDetail.
-        :type: str
-        """
-        self._cin = cin
-
-    @property
-    def efiling_status(self):
-        """
-        Gets the efiling_status of this CompanyDetail.
-        Status of EFiling.
-
-        :return: The efiling_status of this CompanyDetail.
-        :rtype: str
-        """
-        return self._efiling_status
-
-    @efiling_status.setter
-    def efiling_status(self, efiling_status):
-        """
-        Sets the efiling_status of this CompanyDetail.
-        Status of EFiling.
-
-        :param efiling_status: The efiling_status of this CompanyDetail.
-        :type: str
-        """
-        self._efiling_status = efiling_status
-
-    @property
-    def incorporation_date(self):
-        """
-        Gets the incorporation_date of this CompanyDetail.
-        Date of incorporation of the company.
-
-        :return: The incorporation_date of this CompanyDetail.
-        :rtype: str
-        """
-        return self._incorporation_date
-
-    @incorporation_date.setter
-    def incorporation_date(self, incorporation_date):
-        """
-        Sets the incorporation_date of this CompanyDetail.
-        Date of incorporation of the company.
-
-        :param incorporation_date: The incorporation_date of this CompanyDetail.
-        :type: str
-        """
-        self._incorporation_date = incorporation_date
-
-    @property
-    def legal_name(self):
-        """
-        Gets the legal_name of this CompanyDetail.
-        Legal name of the company
-
-        :return: The legal_name of this CompanyDetail.
-        :rtype: str
-        """
-        return self._legal_name
-
-    @legal_name.setter
-    def legal_name(self, legal_name):
-        """
-        Sets the legal_name of this CompanyDetail.
-        Legal name of the company
-
-        :param legal_name: The legal_name of this CompanyDetail.
-        :type: str
-        """
-        self._legal_name = legal_name
-
-    @property
-    def paid_up_capital(self):
-        """
-        Gets the paid_up_capital of this CompanyDetail.
-        Paid up capital
-
-        :return: The paid_up_capital of this CompanyDetail.
-        :rtype: int
-        """
-        return self._paid_up_capital
-
-    @paid_up_capital.setter
-    def paid_up_capital(self, paid_up_capital):
-        """
-        Sets the paid_up_capital of this CompanyDetail.
-        Paid up capital
-
-        :param paid_up_capital: The paid_up_capital of this CompanyDetail.
-        :type: int
-        """
-        self._paid_up_capital = paid_up_capital
-
-    @property
-    def registered_address(self):
-        """
-        Gets the registered_address of this CompanyDetail.
-        Registered Address
-
-        :return: The registered_address of this CompanyDetail.
-        :rtype: Address
-        """
-        return self._registered_address
-
-    @registered_address.setter
-    def registered_address(self, registered_address):
-        """
-        Sets the registered_address of this CompanyDetail.
-        Registered Address
-
-        :param registered_address: The registered_address of this CompanyDetail.
-        :type: Address
-        """
-        self._registered_address = registered_address
-
-    @property
-    def classification(self):
-        """
-        Gets the classification of this CompanyDetail.
-        Classification of Company
-
-        :return: The classification of this CompanyDetail.
-        :rtype: str
-        """
-        return self._classification
-
-    @classification.setter
-    def classification(self, classification):
-        """
-        Sets the classification of this CompanyDetail.
-        Classification of Company
-
-        :param classification: The classification of this CompanyDetail.
-        :type: str
-        """
-        allowed_values = ["Public Limited Indian Non-Government Company",
-                          "Private Limited Indian Non-Government Company",
-                          "One Person Company",
-                          "Private Limited Foreign Company Incorporated in India",
-                          "Public Limited Foreign Company Incorporated in India",
-                          "Union Government Company", "State Government Company",
-                          "Guarantee & Association Public", "Guarantee & Association Private",
-                          "Not For Profit Company", "Unlimited Liabilities Public",
-                          "Unlimited Liabilities Private", "Undefined"]
-        if classification not in allowed_values:
-            raise ValueError(
-                "Invalid value for `classification`, must be one of {0}"
-                .format(allowed_values)
-            )
-        self._classification = classification
-
-    @property
-    def status(self):
-        """
-        Gets the status of this CompanyDetail.
-        Listing status
-
-        :return: The status of this CompanyDetail.
-        :rtype: str
-        """
-        return self._status
-
-    @status.setter
-    def status(self, status):
-        """
-        Sets the status of this CompanyDetail.
-        Listing status
-
-        :param status: The status of this CompanyDetail.
-        :type: str
-        """
-        allowed_values = ["Listed", "Unlisted", "Undefined"]
-        if status not in allowed_values:
-            raise ValueError(
-                "Invalid value for `status`, must be one of {0}"
-                .format(allowed_values)
-            )
-        self._status = status
-
-    @property
-    def next_cin(self):
-        """
-        Gets the next_cin of this CompanyDetail.
-        Changed CIN
-
-        :return: The next_cin of this CompanyDetail.
-        :rtype: str
-        """
-        return self._next_cin
-
-    @next_cin.setter
-    def next_cin(self, next_cin):
-        """
-        Sets the next_cin of this CompanyDetail.
-        Changed CIN
-
-        :param next_cin: The next_cin of this CompanyDetail.
-        :type: str
-        """
-        self._next_cin = next_cin
+        self._company = company
 
     def to_dict(self):
         """

@@ -45,7 +45,7 @@ class SearchApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
-    def authorized_signatories_get(self, filters, **kwargs):
+    def authorized_signatories_get(self, x_api_version, filters, **kwargs):
         """
         Search Authorized Signatories
         Search Authorized Signatories by DIN or PAN
@@ -56,20 +56,20 @@ class SearchApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.authorized_signatories_get(filters, callback=callback_function)
+        >>> thread = api.authorized_signatories_get(x_api_version, filters, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str filters: Filter to apply. Filter can be of the format ={\"filter\":\"value\"}
-            Filter can be DIN and PAN (required)
-        :param float limit: Offset the list of returned results by this amount. Default is zero.
-        :param float offset: Number of items to retrieve. Default is 5 maximum is 100.
-        :return: AuthorizedSignatories
+        :param str x_api_version: api version (required)
+        :param str filters: Filter to apply. Filter can be of the format ={\"filter\":\"value\"} Filter can be DIN and PAN (required)
+        :param float limit: Number of items to retrieve. Default is 5 maximum is 100.
+        :param float offset: Offset the list of returned results by this amount. Default is zero.
+        :return: InlineResponse200
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['filters', 'limit', 'offset']
+        all_params = ['x_api_version', 'filters', 'limit', 'offset']
         all_params.append('callback')
 
         params = locals()
@@ -82,12 +82,14 @@ class SearchApi(object):
             params[key] = val
         del params['kwargs']
 
+        # verify the required parameter 'x_api_version' is set
+        if ('x_api_version' not in params) or (params['x_api_version'] is None):
+            raise ValueError("Missing the required parameter `x_api_version` when calling `authorized_signatories_get`")
         # verify the required parameter 'filters' is set
         if ('filters' not in params) or (params['filters'] is None):
-            raise ValueError("Missing the required parameter `filters`"
-                             " when calling `authorized_signatories_get`")
+            raise ValueError("Missing the required parameter `filters` when calling `authorized_signatories_get`")
 
-        resource_path = '/authorizedSignatories'.replace('{format}', 'json')
+        resource_path = '/authorized-signatories'.replace('{format}', 'json')
         method = 'GET'
 
         path_params = {}
@@ -101,6 +103,8 @@ class SearchApi(object):
             query_params['filters'] = params['filters']
 
         header_params = {}
+        if 'x_api_version' in params:
+            header_params['x-api-version'] = params['x_api_version']
 
         form_params = {}
         files = {}
@@ -127,17 +131,15 @@ class SearchApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=files,
-                                            response_type='AuthorizedSignatories',
+                                            response_type='InlineResponse200',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'))
         return response
 
-    def companies_get(self, **kwargs):
+    def companies_get(self, x_api_version, **kwargs):
         """
         Search Companies
-        The Search Companies returns information about the companies registered
-        in India.\nThe response includes the name and CIN and lists the companies
-        in a proper display order.
+        The Search Companies returns information about the companies registered in India.\nThe response includes the name and CIN and lists the companies in a proper display order.
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please define a `callback` function
@@ -145,20 +147,20 @@ class SearchApi(object):
         >>> def callback_function(response):
         >>>     pprint(response)
         >>>
-        >>> thread = api.companies_get(callback=callback_function)
+        >>> thread = api.companies_get(x_api_version, callback=callback_function)
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param float limit: Offset the list of returned results by this amount. Default is zero.
-        :param float offset: Number of items to retrieve. Default is 5 maximum is 100.
-        :param str filters: Filter to apply. Filter can be of the format ={filter:value} Filter can
-        be \"nameStartsWith\"
-        :return: Companies
+        :param str x_api_version: api version (required)
+        :param float limit: Number of items to retrieve. Default is 5 maximum is 100.
+        :param float offset: Offset the list of returned results by this amount. Default is zero.
+        :param str filters: Filter to apply. Filter can be of the format ={filter:value} Filter can be \"nameStartsWith\"
+        :return: InlineResponse2001
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['limit', 'offset', 'filters']
+        all_params = ['x_api_version', 'limit', 'offset', 'filters']
         all_params.append('callback')
 
         params = locals()
@@ -171,6 +173,9 @@ class SearchApi(object):
             params[key] = val
         del params['kwargs']
 
+        # verify the required parameter 'x_api_version' is set
+        if ('x_api_version' not in params) or (params['x_api_version'] is None):
+            raise ValueError("Missing the required parameter `x_api_version` when calling `companies_get`")
 
         resource_path = '/companies'.replace('{format}', 'json')
         method = 'GET'
@@ -186,6 +191,8 @@ class SearchApi(object):
             query_params['filters'] = params['filters']
 
         header_params = {}
+        if 'x_api_version' in params:
+            header_params['x-api-version'] = params['x_api_version']
 
         form_params = {}
         files = {}
@@ -212,7 +219,7 @@ class SearchApi(object):
                                             body=body_params,
                                             post_params=form_params,
                                             files=files,
-                                            response_type='Companies',
+                                            response_type='InlineResponse2001',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'))
         return response

@@ -42,7 +42,7 @@ class AuthorizedSignatory(object):
             'din': 'str',
             'designation': 'str',
             'date_of_birth': 'str',
-            'age': 'str',
+            'age': 'float',
             'date_of_appointment': 'str',
             'date_of_appointment_for_current_designation': 'str',
             'date_of_cessation': 'str'
@@ -187,7 +187,7 @@ class AuthorizedSignatory(object):
         Age of the Authorized Signatory
 
         :return: The age of this AuthorizedSignatory.
-        :rtype: str
+        :rtype: float
         """
         return self._age
 
@@ -198,7 +198,7 @@ class AuthorizedSignatory(object):
         Age of the Authorized Signatory
 
         :param age: The age of this AuthorizedSignatory.
-        :type: str
+        :type: float
         """
         self._age = age
 
@@ -241,8 +241,7 @@ class AuthorizedSignatory(object):
         Sets the date_of_appointment_for_current_designation of this AuthorizedSignatory.
 
 
-        :param date_of_appointment_for_current_designation:
-        The date_of_appointment_for_current_designation of this AuthorizedSignatory.
+        :param date_of_appointment_for_current_designation: The date_of_appointment_for_current_designation of this AuthorizedSignatory.
         :type: str
         """
         self._date_of_appointment_for_current_designation = date_of_appointment_for_current_designation

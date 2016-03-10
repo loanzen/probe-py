@@ -19,6 +19,7 @@ Copyright 2015 SmartBear Software
 """
 
 from __future__ import absolute_import
+import base64
 import urllib3
 import os
 
@@ -33,7 +34,6 @@ import logging
 
 from six import iteritems
 
-
 def singleton(cls, *args, **kw):
     instances = {}
 
@@ -43,9 +43,7 @@ def singleton(cls, *args, **kw):
         return instances[cls]
     return _singleton
 
-
 os_env = os.environ.get
-
 
 @singleton
 class Configuration(object):
@@ -237,6 +235,6 @@ class Configuration(object):
         return "Python SDK Debug Report:\n"\
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
-               "Version of the API: 1\n"\
+               "Version of the API: 1.1\n"\
                "SDK Package Version: 1.0.0".\
                format(env=sys.platform, pyversion=sys.version)

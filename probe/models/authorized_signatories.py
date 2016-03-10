@@ -37,42 +37,42 @@ class AuthorizedSignatories(object):
                                   and the value is json key in definition.
         """
         self.swagger_types = {
-            'data': 'list[AuthorizedSignatoryWithCompanies]',
+            'authorized_signatories': 'list[AuthorizedSignatoryWithCompanies]',
             'has_more': 'bool',
             'total_count': 'int'
         }
 
         self.attribute_map = {
-            'data': 'data',
+            'authorized_signatories': 'authorized-signatories',
             'has_more': 'hasMore',
             'total_count': 'totalCount'
         }
 
-        self._data = None
+        self._authorized_signatories = None
         self._has_more = None
         self._total_count = None
 
     @property
-    def data(self):
+    def authorized_signatories(self):
         """
-        Gets the data of this AuthorizedSignatories.
+        Gets the authorized_signatories of this AuthorizedSignatories.
         Array of Authorized Signatories
 
-        :return: The data of this AuthorizedSignatories.
+        :return: The authorized_signatories of this AuthorizedSignatories.
         :rtype: list[AuthorizedSignatoryWithCompanies]
         """
-        return self._data
+        return self._authorized_signatories
 
-    @data.setter
-    def data(self, data):
+    @authorized_signatories.setter
+    def authorized_signatories(self, authorized_signatories):
         """
-        Sets the data of this AuthorizedSignatories.
+        Sets the authorized_signatories of this AuthorizedSignatories.
         Array of Authorized Signatories
 
-        :param data: The data of this AuthorizedSignatories.
+        :param authorized_signatories: The authorized_signatories of this AuthorizedSignatories.
         :type: list[AuthorizedSignatoryWithCompanies]
         """
-        self._data = data
+        self._authorized_signatories = authorized_signatories
 
     @property
     def has_more(self):
