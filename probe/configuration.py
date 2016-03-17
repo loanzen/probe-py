@@ -66,7 +66,7 @@ class Configuration(object):
 
         # Authentication Settings
         # dict to store API key(s)
-        self.api_key = {'x-api-key': os_env('api_key')}
+        self.api_key = {'x-api-key': os_env('PROBE_API_KEY')}
         # dict to store API prefix (e.g. Bearer)
         self.api_key_prefix = {}
         # Username for HTTP basic authentication
